@@ -1,9 +1,9 @@
 output "private_subnet" {
-  value = ["${aws_subnet.private.id}"]
+  value = "${aws_subnet.private.id}"
 }
 
 output "public_subnet" {
-  value = ["${aws_subnet.public.id}"]
+  value = "${aws_subnet.public.id}"
 }
 
 output "vpc_id" {
@@ -11,11 +11,11 @@ output "vpc_id" {
 }
 
 output "public_route_table_id" {
-  value = ["${aws_route_table.public.id}"]
+  value = "${aws_route_table.public.id}"
 }
 
 output "private_route_table_id" {
-  value = ["${aws_route_table.private.id}"]
+  value = "${aws_route_table.private.id}"
 }
 
 output "default_security_group_id" {
