@@ -74,7 +74,7 @@ resource "aws_route_table_association" "private" {
 }
 
 resource "aws_security_group" "developer" {
-  name   = "${var.name}-developer"
+  name   = "hoge-developer"
   vpc_id = "${aws_vpc.basic.id}"
 
   tags {
