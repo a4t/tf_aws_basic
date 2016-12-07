@@ -1,10 +1,6 @@
-variable "name" {
-  default = ""
-}
+variable "name" {}
 
-variable "vpc_iprange_prefix" {
-  default = ""
-}
+variable "vpc_iprange_prefix" {}
 
 variable "developer_ips" {
   default = []
@@ -22,6 +18,4 @@ variable "enable_nat_gateway" {
   default = false
 }
 
-variable "az" {
-  default = ""
-}
+variable "az" {}
