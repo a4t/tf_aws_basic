@@ -7,15 +7,11 @@ variable "developer_ips" {
 }
 
 variable "enable_dns_hostnames" {
-  default = false
+  default = true
 }
 
 variable "enable_dns_support" {
-  default = false
-}
-
-variable "enable_nat_gateway" {
-  default = false
+  default = true
 }
 
 variable "az" {}
