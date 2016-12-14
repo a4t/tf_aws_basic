@@ -89,7 +89,7 @@ resource "aws_security_group_rule" "egress" {
   protocol    = "-1"
   cidr_blocks = ["0.0.0.0/0"]
 
-  security_group_id = "${module.basic.developer_sg}"
+  security_group_id = "${aws_security_group.developer.id}"
 }
 
 
@@ -100,7 +100,7 @@ resource "aws_security_group_rule" "http_ingress" {
   protocol    = "tcp"
   cidr_blocks = "${var.developer_ips}"
 
-  security_group_id = "${module.basic.developer_sg}"
+  security_group_id = "${aws_security_group.developer.id}"
 }
 
 
@@ -111,7 +111,7 @@ resource "aws_security_group_rule" "https_ingress" {
   protocol    = "tcp"
   cidr_blocks = "${var.developer_ips}"
 
-  security_group_id = "${module.basic.developer_sg}"
+  security_group_id = "${aws_security_group.developer.id}"
 }
 
 
@@ -122,5 +122,5 @@ resource "aws_security_group_rule" "ssh_ingress" {
   protocol    = "tcp"
   cidr_blocks = "${var.developer_ips}"
 
-  security_group_id = "${module.basic.developer_sg}"
+  security_group_id = "${aws_security_group.developer.id}"
 }
