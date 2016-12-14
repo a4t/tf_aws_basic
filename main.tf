@@ -80,32 +80,47 @@ resource "aws_security_group" "developer" {
   tags {
     Name = "${var.name}-developer"
   }
+}
 
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = "${var.developer_ips}"
-  }
+resource "aws_security_group_rule" "egress" {
+  type        = "egress"
+  from_port   = 0
+  to_port     = 0
+  protocol    = "-1"
+  cidr_blocks = ["0.0.0.0/0"]
 
-  ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = "${var.developer_ips}"
-  }
+  security_group_id = "${module.basic.developer_sg}"
+}
 
-  ingress {
-    from_port   = 443
-    to_port     = 443
-    protocol    = "tcp"
-    cidr_blocks = "${var.developer_ips}"
-  }
 
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+resource "aws_security_group_rule" "http_ingress" {
+  type        = "ingress"
+  from_port   = 80
+  to_port     = 80
+  protocol    = "tcp"
+  cidr_blocks = "${var.developer_ips}"
+
+  security_group_id = "${module.basic.developer_sg}"
+}
+
+
+resource "aws_security_group_rule" "https_ingress" {
+  type        = "ingress"
+  from_port   = 443
+  to_port     = 443
+  protocol    = "tcp"
+  cidr_blocks = "${var.developer_ips}"
+
+  security_group_id = "${module.basic.developer_sg}"
+}
+
+
+resource "aws_security_group_rule" "ssh_ingress" {
+  type        = "ingress"
+  from_port   = 22
+  to_port     = 22
+  protocol    = "tcp"
+  cidr_blocks = "${var.developer_ips}"
+
+  security_group_id = "${module.basic.developer_sg}"
 }
