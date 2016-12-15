@@ -6,6 +6,10 @@ variable "developer_ips" {
   default = []
 }
 
+variable "ingress_port" {
+  default = []
+}
+
 variable "enable_dns_hostnames" {
   default = true
 }
